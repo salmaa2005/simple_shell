@@ -1,8 +1,5 @@
-#include "mystrings.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "shell.h"
+
 /**
  * _strncat - cocatenates two strings
  * @dest: a pointer that points to an array of characters

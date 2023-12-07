@@ -1,8 +1,5 @@
-#include "mystrings.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "shell.h"
+
 /**
  * _strstr - locates a substring
  * @haystack: the string to be searched

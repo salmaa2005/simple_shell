@@ -1,8 +1,5 @@
-#include "mystrings.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "shell.h"
+
 /**
  * _strlen - returns the length of a string
  * @s: is a pointer to the first index of the string
