@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 size_t _strlen(char *s);
 void _puts(char *str);
@@ -18,5 +19,7 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 char *_strchr(char *s, char c);
 unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
+char *_strstr(char *haystack, char *needle);
+char *_strdup(const char *str);
 
 #endif
