@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _strstr - locates a specfic substring
+ * _strstr - locates a substring
  * @haystack: the string to be searched for
- * @needle: the substring to be located
+ * @needle: the substring to be located at
  *
- * Return: returns a pointer
+ * Return: returns a pointer to the substring
  */
 
 char *_strstr(char *haystack, char *needle)
@@ -29,28 +29,27 @@ char *_strstr(char *haystack, char *needle)
     return NULL;  /* needle not found */
 }
 
-
-
 /**
- * _strdup - duplicates a specfic string
- * @str: the string to be duplicated
+ * _strdup - duplicates a string
+ * @string: the specfic string to duplicate
  *
- * Return: pointer to that specfic duplicated string
+ * Return: pointer
  */
-char *_strdup(const char *str)
+char *_strdup(const char *string)
 {
 	int len = 0;
 	char *ret;
 
-	if (str == NULL)
-		return NULL;
-	while (*str++)
+	if (string == NULL)
+		return (NULL);
+	while (*string++)
 		len++;
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
-		return NULL;
+		return (NULL);
 	for (len++; len--;)
-		ret[len] = *(--str);
+		ret[len] = *--string;
 	return (ret);
 }
+
 
