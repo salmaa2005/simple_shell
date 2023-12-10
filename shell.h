@@ -1,11 +1,15 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+extern char **environ;
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /* STRINGS */
 
@@ -27,5 +31,8 @@ char *_strdup(const char *str);
 /* TOOLS */
 
 char *read_line(void);
+char **tokenizer(char *line);
+void freearray(char **arr);
+int _execute(char **command, char **argv);
 
 #endif
