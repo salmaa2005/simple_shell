@@ -76,7 +76,7 @@ char **_strtok(char *string, char *delimiter)
 			if (tokenized_string[row] == NULL)
 				return (NULL);
 
-			strncpy(tokenized_string[row], string + i, token_length);
+			_strncpy(tokenized_string[row], string + i, token_length);
 			tokenized_string[row][token_length] = '\0';
 
 			row++;
