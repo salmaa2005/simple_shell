@@ -64,5 +64,37 @@ char *_strpbrk(char *s, char *accept)
 				return (s + i);
 		}
 	}
-	return ('\0');
+	return (NULL);
+}
+
+/**
+ * _strncpy - copies a specific number of chars into a string
+ * @destination: an array of characters
+ * @source: an array of characters
+ * @char_number: the number of chars to be copied
+ *
+ * Return: returns a pointer to an array of chars
+ */
+
+char *_strncpy(char *destination, char *source, int char_number)
+{
+	int i = 0, j;
+	char *return_string = destination;
+
+	while (source[i] != '\0' && i < char_number)
+	{
+		destination[i] = source[i];
+		i++;
+	}
+
+	if (i < char_number)
+	{
+		j = i;
+		while (j < char_number)
+		{
+			destination[j] = '\0';
+			j++;
+		}
+	}
+	return (return_string);
 }
