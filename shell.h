@@ -28,6 +28,7 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 char *_strdup(const char *str);
+char *_strncpy(char *destination, char *source, int n);
 
 /* TOOLS */
 
