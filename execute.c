@@ -1,31 +1,34 @@
 #include "shell.h"
 
-/**
- * _execute - executes a command
- * @command: command to be executed
- * @argv: cmd arguments
- *
- * Return: status
- */
-int _execute(char **command, char **argv)
+int _execute(char **command, char **argv, int idx)
 {
-	pid_t child;
-	int status;
+    char *full_command;
+    pid_t child;
+    int status;
 
-	child = fork();
-	if (child == 0)
-	{
-		if (execve(command[0], command, environ) == -1)
-		{
-			perror(argv[0]);
-			freearray(command);
-			exit(127);
-		}
-	}
-	else
-	{
-		waitpid(child, &status, 0);
-		freearray(command);
-	}
-	return (WEXITSTATUS(status));
+    full_command = _getpath(command[0]);
+    if(!full_command)
+    {
+        printerror(argv[0], command[0], idx);
+        freearray(command);
+        return(127);
+    }
+
+    child = fork();
+    if(child == 0)
+    {
+        if(execve(full_command, command, environ) == -1)
+        {
+            free(full_command);
+            freearray(command);
+        }
+    }
+    else
+    {
+        waitpid(child, &status, 0);
+        freearray(command);
+        free(full_command);
+    }
+    return(WEXITSTATUS(status));
+
 }

@@ -10,26 +10,23 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-	while (*haystack)
-	{
-		char *hay = haystack;
-		char *nee = needle;
+    while (*haystack) {
+        char *hay = haystack;
+        char *nee = needle;
 
-		while (*haystack && *nee && *haystack == *nee)
-		{
-			haystack++;
-			nee++;
-		}
+        while (*haystack && *nee && *haystack == *nee) {
+            haystack++;
+            nee++;
+        }
 
-		if (!*nee)
-		{
-			return (hay); /* needle found in haystack */
-		}
+        if (!*nee) {
+            return hay;  /* needle found in haystack */
+        }
 
-		haystack = hay + 1; /* reset haystack to the next character */
-	}
+        haystack = hay + 1;  /* reset haystack to the next character */
+    }
 
-	return (NULL); /* needle not found */
+    return NULL;  /* needle not found */
 }
 
 /**
@@ -54,3 +51,5 @@ char *_strdup(const char *string)
 		ret[len] = *--string;
 	return (ret);
 }
+
+

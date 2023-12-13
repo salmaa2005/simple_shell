@@ -3,14 +3,14 @@
 
 extern char **environ;
 
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <unistd.h>
+#include <sys/stat.h>
 
 /* STRINGS */
 
@@ -28,21 +28,23 @@ unsigned int _strspn(char *s, char *accept);
 char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 char *_strdup(const char *str);
-char *_strncpy(char *destination, char *source, int n);
 
 /* TOOLS */
 
 char *read_line(void);
-char **tokenizer(char *line, char *delimiter);
+char **tokenizer(char *line);
 void freearray(char **arr);
-int _execute(char **command, char **argv);
+int _execute(char **command, char **argv, int idx);
 
-/* myStrtok */
+char *_getenv(char *variable);
+char *_getpath(char *command);
+void printerror(char *name, char *cmd, int idx);
+char *_itoa(int n);
+void reverse_string(char *str, int len);
 
-int check_delimiter(char c, char *delimiter);
-int count_tokens(char *string, char *delimiter);
-char **_strtok(char *string, char *delimiter);
-
-void *_realloc(void *void_pointer, unsigned int old_s, unsigned int new_size);
+int isbuiltin(char *command);
+void handling_builtin(char **command, char **argv, int *status, int idx);
+void exiting_shell(char **command, int *status);
+void printenv(char **command, int *status);
 
 #endif
