@@ -66,7 +66,7 @@ char *_strchr(char *s, char c)
 		if (s[i] == c)
 			return (s + i);
 	}
-	return ('\0');
+	return (NULL);
 }
 
 /**
@@ -105,7 +105,3 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	}
 	return (dest);
 }
-
-/**
- *
- */
