@@ -18,17 +18,29 @@ int isbuiltin(char *command)
 }
 
 void handling_builtin(char **command, char **argv, int *status, int idx)
-
 {
     (void) argv;
     (void) idx;
 
     if (_strcmp(command[0], "exit") == 0)
-        exiting_shell(command, status);
+    {
+        if (command[1] != NULL)
+        {
+            *status = atoi(command[1]);
+            exiting_shell(command, status);
+        }
+        else
+        {
+            *status = 0;
+            exiting_shell(command, status);
+        }
+    }
     else if (_strcmp(command[0], "env") == 0)
+    {
         printenv(command, status);
-
+    }
 }
+
 
 void exiting_shell(char **command, int *status)
 {
