@@ -3,13 +3,14 @@
 
 extern char **environ;
 
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 /* STRINGS */
 
@@ -34,5 +35,11 @@ char *read_line(void);
 char **tokenizer(char *line);
 void freearray(char **arr);
 int _execute(char **command, char **argv);
+
+/* myStrtok */
+
+int check_delimiter(char c, char *delimiter);
+int count_tokens(char *string, char *delimiter);
+char **_strtok(char *string, char *delimiter);
 
 #endif
