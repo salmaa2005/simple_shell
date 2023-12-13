@@ -52,7 +52,7 @@ char **_strtok(char *string, char *delimiter)
 {
 	char **tokenized_string;
 	int token_count = 0;
-	int i, row = 0, column;
+	int i, row = 0;
 
 	if (string == NULL)
 		return (NULL);
