@@ -73,6 +73,7 @@ char **_strtok(char *string, char *delimiter)
 
 			tokenized_string[row] =
 				(char *)malloc((token_length + 1) * sizeof(char));
+
 			if (tokenized_string[row] == NULL)
 				return (NULL);
 
@@ -83,7 +84,6 @@ char **_strtok(char *string, char *delimiter)
 			i += token_length - 1;
 		}
 	}
-
 	tokenized_string[row] = NULL;
 	return (tokenized_string);
 }
