@@ -33,7 +33,7 @@ char *_strncpy(char *destination, char *source, int n);
 /* TOOLS */
 
 char *read_line(void);
-char **tokenizer(char *line);
+char **tokenizer(char *line, char *delimiter);
 void freearray(char **arr);
 int _execute(char **command, char **argv);
 
