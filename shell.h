@@ -43,7 +43,6 @@ int check_delimiter(char c, char *delimiter);
 int count_tokens(char *string, char *delimiter);
 char **_strtok(char *string, char *delimiter);
 
-void *_realloc(void *void_pointer, unsigned int old_size,
-			   unsigned int new_size);
+void *_realloc(void *void_pointer, unsigned int old_s, unsigned int new_size);
 
 #endif
