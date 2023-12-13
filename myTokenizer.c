@@ -4,6 +4,8 @@
  * tokenizer - tokenizes a string
  * @line: string to tokenize
  * @delimiter: an array of delimiters (separators)
+ *
+ * Return: returns pointer to an array of strings
  */
 
 char **tokenizer(char *line, char *delimiter)
