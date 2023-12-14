@@ -49,9 +49,6 @@ void printenv(char **command, int *status);
 
 /* myStrtok*/
 
-int check_delimiter(char c, const char *delimiter);
-char **_strtok(char *string, const char *delimiter);
-void free_tokens(char **tokens);
-void print_tokens(char **tokens);
+char *_strtok(char *string, const char *delimiters);
 
 #endif
