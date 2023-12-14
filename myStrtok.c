@@ -1,16 +1,20 @@
 #include "shell.h"
+#include <stdio.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 /**
- * check_delimiter - checks if a character is a delimeter
- * @c: the character to be chaecked
- * @delimiter: an array of characters
+ * check_delimiter - checks if a character is a delimiter
+ * @c: character to check
+ * @delimiter: delimiter string
  *
- * Return: 1 if c is a delimiter, 0 otherwise
+ * Return: 1 if the character is a delimiter, 0 otherwise
  */
-int check_delimiter(char c, char *delimiter)
+int check_delimiter(char c, const char *delimiter)
 {
-	int i;
+	int i = 0;
+
+	if (delimiter == NULL)
+		return (0);
 
 	for (i = 0; delimiter[i] != '\0'; i++)
 	{
@@ -21,52 +25,92 @@ int check_delimiter(char c, char *delimiter)
 }
 /**
  * _strtok - splits a string into tokens
- * @string: the string to be split
- * @delimiter: the delimiter string
+ * @string: string to split
+ * @delimiter: delimiter string
  *
- * Return: a pointer to an array of strings
+ * Return: a pointer to an array of tokens
  */
-
-char **_strtok(char *string, char *delimiter)
+char **_strtok(char *string, const char *delimiter)
 {
-	int i, j, k, m;
-	int token_count = 0;
-	char **s;
+	int token_count = 0, j = 0, k = 0, i = 0, m = 0;
+	char **tokens;
 
-	if (string == NULL || string[0] == 0)
+	if (string == NULL || string[0] == '\0')
 		return (NULL);
-	if (!delimiter)
+	if (delimiter == NULL)
 		delimiter = " ";
 	for (i = 0; string[i] != '\0'; i++)
+	{
 		if (!check_delimiter(string[i], delimiter) &&
-			(check_delimiter(string[i + 1], delimiter) || !string[i + 1]))
+			(check_delimiter(string[i + 1], delimiter) ||
+			 string[i + 1] == '\0'))
 			token_count++;
-
+	}
 	if (token_count == 0)
 		return (NULL);
-
-	s = malloc((1 + token_count) * sizeof(char *));
-	if (!s)
+	tokens = malloc((token_count + 1) * sizeof(char *));
+	if (tokens == NULL)
 		return (NULL);
-	for (i = 0, j = 0; j < token_count; j++)
+	for (i = 0; j < token_count; j++)
 	{
 		while (check_delimiter(string[i], delimiter))
 			i++;
-		k = 0;
-		while (!check_delimiter(string[i + k], delimiter) && string[i + k])
+		while (!check_delimiter(string[i + k], delimiter) &&
+			   string[i + k] != '\0')
 			k++;
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
+		tokens[j] = malloc((k + 1) * sizeof(char));
+		if (tokens[j] == NULL)
 		{
-			for (k = 0; k < j; k++)
-				free(s[k]);
-			free(s);
+			for (m = 0; m < j; m++)
+				free(tokens[m]);
+			free(tokens);
 			return (NULL);
 		}
 		for (m = 0; m < k; m++)
-			s[j][m] = string[i++];
-		s[j][m] = 0;
+			tokens[j][m] = string[i++];
+		tokens[j][k] = '\0';
 	}
-	s[j] = NULL;
-	return (s);
+	tokens[j] = NULL;
+	return (tokens);
+}
+/**
+ * free_tokens - frees an array of tokens
+ * @tokens: array of Tokens
+ *
+ * Return: returns void
+ */
+void free_tokens(char **tokens)
+{
+	int i = 0;
+
+	if (tokens == NULL)
+		return;
+
+	for (i = 0; tokens[i] != NULL; i++)
+		free(tokens[i]);
+
+	free(tokens);
+}
+/**
+ * print_tokens - prints an array of tokens
+ * @tokens: array of tokens
+ *
+ * Return: returns void
+ */
+void print_tokens(char **tokens)
+{
+	int i = 0;
+
+	if (tokens == NULL)
+	{
+		printf("Tokens: NULL\n");
+		return;
+	}
+
+	printf("Tokens: ");
+	for (i = 0; tokens[i] != NULL; i++)
+	{
+		printf("'%s' ", tokens[i]);
+	}
+	printf("\n");
 }

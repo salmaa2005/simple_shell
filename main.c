@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		}
 		idx++;
 
-		command = tokenizer(line);
+		command = _strtok(line, " \t\n");
 		free(line);
 
 		if (!command)

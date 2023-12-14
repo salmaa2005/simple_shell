@@ -6,11 +6,11 @@ extern char **environ;
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/stat.h>
+#include <unistd.h>
 
 /* STRINGS */
 
@@ -46,5 +46,12 @@ int isbuiltin(char *command);
 void handling_builtin(char **command, char **argv, int *status, int idx);
 void exiting_shell(char **command, int *status);
 void printenv(char **command, int *status);
+
+/* myStrtok*/
+
+int check_delimiter(char c, const char *delimiter);
+char **_strtok(char *string, const char *delimiter);
+void free_tokens(char **tokens);
+void print_tokens(char **tokens);
 
 #endif
