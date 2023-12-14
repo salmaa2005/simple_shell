@@ -16,7 +16,7 @@ char **tokenizer(char *line)
 	tmp = _strdup(line);
 	if (!tmp)
 		return (NULL);
-	token = strtok(tmp, " \t\n");
+	token = _strtok(tmp, " \t\n");
 	if (token == NULL)
 	{
 		free(tmp);
@@ -25,7 +25,7 @@ char **tokenizer(char *line)
 	while (token)
 	{
 		i++;
-		token = strtok(NULL, " \t\n");
+		token = _strtok(NULL, " \t\n");
 	}
 	free(tmp);
 	command = malloc(sizeof(char *) * (i + 1));
@@ -37,7 +37,7 @@ char **tokenizer(char *line)
 		free(command);
 		return (NULL);
 	}
-	token = strtok(tmp, " \t\n");
+	token = _strtok(tmp, " \t\n");
 	while (token)
 	{
 		command[j] = _strdup(token);
@@ -49,7 +49,7 @@ char **tokenizer(char *line)
 			free(tmp);
 			return (NULL);
 		}
-		token = strtok(NULL, " \t\n");
+		token = _strtok(NULL, " \t\n");
 		j++;
 	}
 	free(tmp);
