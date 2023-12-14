@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			return (status);
 		}
 		idx++;
-
+		ignore_comments(line);
 		command = tokenizer(line);
 		free(line);
 
