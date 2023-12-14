@@ -50,5 +50,6 @@ void printenv(char **command, int *status);
 /* myStrtok*/
 
 char *_strtok(char *string, const char *delimiters);
+void ignore_comments(char *comment);
 
 #endif
